@@ -1,43 +1,20 @@
-const celciusField=document.querySelector("#celcius");
-const degree=document.querySelector("#degree");
-const convertBtn=document.querySelector("#convert-btn");
-const tempType=document.querySelector("#temp-type");
+const convert = () => {
+  const temp = parseInt(document.getElementById("inp").value);
+  const type = document.getElementById("type").value;
 
-window.addEventListener("load", () =>{
-    degree.value ="";
-    celciusField.innerHTML ="";
-})
+  if (type == "fahr") {
+    var res = (temp * 9) / 5 + 32;
+  } else {
+    var res = temp + 273;
+  }
+  document.getElementById("result").innerHTML = res;
+};
 
-convertBtn.addEventListener("click", (e) =>{
-    e.preventDefault();
-    convertToCelcius();
-
-    convertBtn.innerHTML= "<span><i class='fa fa-spinner fa=spin'></i>Converting...</span>"
-    setTimeout(() => {
-        convertBtn.innerHTML ="<span>Convert</span>"
-    }, 1000);
-})
-
-function convertToCelcius(){
-
-        let inputvalue = degree.value;
-        setTimeout(() => {
-            if(tempType.value === "fahrenheit")
-            {
-                const fahrenheitToCelcius =(inputvalue-32)*(5/9);
-                celciusField.innerHTML=`${fahrenheitToCelcius.toFixed(3)} &deg;
-                c`;
-            }
-            else if(tempType.value ==="kelvin")
-            {
-                const kelvinToCelcius= inputvalue-273.15;
-                celciusField.innerHTML=`${kelvinToCelcius.toFixed(3)} &deg;
-                c`;
-            }
-            
-    
-    
-        }, 1200);
-       
-
-}
+//   var typed = new Typed("#result", {
+//     strings: [`${res}`],
+//     typeSpeed: 100,
+//     backSpeed: 5,
+//     loop: true,
+//   });
+//   typed;
+//
